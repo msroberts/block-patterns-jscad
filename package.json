@@ -1,0 +1,20 @@
+{
+  "name": "block-patterns-jscad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msroberts/block-patterns-jscad.git"
+  },
+  "keywords": [],
+  "author": "Madeleine Susi Roberts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/msroberts/block-patterns-jscad/issues"
+  },
+  "homepage": "https://github.com/msroberts/block-patterns-jscad#readme"
+}
