@@ -1,21 +1,20 @@
-import typescript from '@rollup/plugin-typescript';
-import replace from '@rollup/plugin-replace';
+import typescript from "@rollup/plugin-typescript";
+import replace from "@rollup/plugin-replace";
 
 export default {
-  input: 'src/index.ts',
+  input: "src/index.ts",
   output: {
-    format: 'cjs',
-    file: 'dist/bundle.js',
+    format: "cjs",
+    file: "dist/index.cjs.js",
   },
   plugins: [
     typescript(),
     replace({
-      "Object.defineProperty(exports, '__esModule', { value: true });": 'var exports = module.exports',
-      delimiters: ['\n', '\n'],
+      "Object.defineProperty(exports, '__esModule', { value: true });":
+        "var exports = module.exports",
+      delimiters: ["\n", "\n"],
       preventAssignment: true,
     }),
   ],
-  external: [
-    '@jscad/modeling',
-  ],
+  external: ["@jscad/modeling"],
 };
