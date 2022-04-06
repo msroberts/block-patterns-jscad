@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "tsc":"tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/msroberts/block-patterns-jscad/issues"
   },
-  "homepage": "https://github.com/msroberts/block-patterns-jscad#readme"
+  "homepage": "https://github.com/msroberts/block-patterns-jscad#readme",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
 }
