@@ -7,6 +7,7 @@ import {
   getChestWidth,
   getHipWidth,
   getShoulderPoints,
+  getWaistWidth,
   HIP_HEIGHT,
 } from "./shared";
 
@@ -22,6 +23,8 @@ export const generateBackBlock = (params: Measurements) => {
   const centerBackHipLine: Vec2 = [0, waistHeight + HIP_HEIGHT];
 
   const backHipPoint: Vec2 = [getHipWidth(params), centerBackHipLine[1]];
+
+  const backWaistPoint: Vec2 = [getWaistWidth(params), centerBackWaistLine[1]];
 
   const [upperShoulderPoint, lowerShoulderPoint] = getShoulderPoints(params);
 
@@ -48,6 +51,8 @@ export const generateBackBlock = (params: Measurements) => {
   ]);
 
   backOutline = path2.appendPoints([backHipPoint], backOutline);
+
+  backOutline = path2.appendPoints([backWaistPoint], backOutline);
 
   backOutline = path2.appendPoints(
     [backArmholePoint, backArmholeHalfPoint],

@@ -34,6 +34,14 @@ export const getParameterDefinitions = () => {
       min: 0,
     },
     {
+      name: "waistRound",
+      type: "number",
+      initial: 24,
+      caption: "Waist (round horizontal measurement)",
+      step: 0.25,
+      min: 0,
+    },
+    {
       name: "armRound",
       type: "number",
       initial: 10,

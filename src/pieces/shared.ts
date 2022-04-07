@@ -11,6 +11,10 @@ export const getChestWidth = ({ chestRound, ease }: Measurements) => {
   return (chestRound + ease) / 4;
 };
 
+export const getWaistWidth = ({ waistRound, ease }: Measurements) => {
+  return (waistRound + ease) / 4 + 1.5;
+};
+
 export const getHipWidth = ({ hipRound, ease }: Measurements) => {
   return (hipRound + (ease * 2) / 3) / 4;
 };
