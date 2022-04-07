@@ -14,7 +14,7 @@ const { line } = primitives;
 const { path2 } = geometries;
 
 export const generateBackBlock = (params: Measurements) => {
-  const { bustHeight, waistHeight, hipRound, ease } = params;
+  const { bustHeight, waistHeight } = params;
 
   const centerBackNeckPoint: Vec2 = [0, 1];
   const centerBackBustLine: Vec2 = [0, bustHeight];
@@ -25,14 +25,18 @@ export const generateBackBlock = (params: Measurements) => {
 
   const [upperShoulderPoint, lowerShoulderPoint] = getShoulderPoints(params);
 
-  const centerBackChestLine: Vec2 = [
-    0,
-    lowerShoulderPoint[1] + getArmholeDepth(params),
-  ];
+  const armholeDepth = getArmholeDepth(params);
+
+  const centerBackChestLine: Vec2 = [0, lowerShoulderPoint[1] + armholeDepth];
 
   const backArmholePoint: Vec2 = [
     getChestWidth(params),
     centerBackChestLine[1],
+  ];
+
+  const backArmholeHalfPoint: Vec2 = [
+    lowerShoulderPoint[0],
+    lowerShoulderPoint[1] + armholeDepth / 2,
   ];
 
   let backOutline = path2.create([
@@ -45,7 +49,10 @@ export const generateBackBlock = (params: Measurements) => {
 
   backOutline = path2.appendPoints([backHipPoint], backOutline);
 
-  backOutline = path2.appendPoints([backArmholePoint], backOutline);
+  backOutline = path2.appendPoints(
+    [backArmholePoint, backArmholeHalfPoint],
+    backOutline
+  );
 
   backOutline = path2.appendPoints(
     [lowerShoulderPoint, upperShoulderPoint],
