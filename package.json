@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run tsc && npm run rollup",
     "rollup": "rollup -c",
+    "start": "rollup -c -w",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
