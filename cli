@@ -1,2 +1,5 @@
 #!/bin/bash
+npm run build
+
 npx jscad -v
+npx jscad ./dist/index.cjs.js -o ./dist/pattern.svg
