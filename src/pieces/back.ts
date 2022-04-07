@@ -1,5 +1,5 @@
 import { Vec2 } from "@jscad/modeling/src/maths/types";
-import { primitives, geometries } from "@jscad/modeling";
+import { geometries, transforms } from "@jscad/modeling";
 
 import { Measurements } from "../types/params";
 import {
@@ -12,7 +12,7 @@ import {
 } from "./shared";
 import { appendSmoothCurve } from "../utils/curves";
 
-const { line } = primitives;
+const { mirrorY } = transforms;
 const { path2 } = geometries;
 
 export const generateBackBlock = (params: Measurements) => {
@@ -114,7 +114,5 @@ export const generateBackBlock = (params: Measurements) => {
 
   backOutline = path2.close(backOutline);
 
-  return {
-    backShort: backOutline,
-  };
+  return [backOutline].map((path) => mirrorY(path));
 };

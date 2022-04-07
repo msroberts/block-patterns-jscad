@@ -1,10 +1,15 @@
 import { Measurements, DesignParameter } from "./types/params";
 import { generateBackBlock } from "./pieces/back";
+import { colors, transforms } from "@jscad/modeling";
+
+const { colorize, cssColors } = colors;
 
 export const main = (params: Measurements) => {
-  const { backShort } = generateBackBlock(params);
+  const backPieces = generateBackBlock(params).map((path) =>
+    colorize(cssColors.blue, path)
+  );
 
-  return [backShort];
+  return [...backPieces];
 };
 
 export const getParameterDefinitions = () => {
