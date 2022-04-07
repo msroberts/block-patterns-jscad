@@ -1,6 +1,8 @@
 import { Vec2 } from "@jscad/modeling/src/maths/types";
 import { Measurements } from "../types/params";
 
+export const HIP_HEIGHT = 9;
+
 export const getNeckWidth = ({ bustRound }: Measurements) => {
   return Math.max(bustRound / 16 + 1 / 2, 2.75);
 };
