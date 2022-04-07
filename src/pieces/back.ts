@@ -1,10 +1,11 @@
 import { Vec2 } from "@jscad/modeling/src/maths/types";
-import { primitives } from "@jscad/modeling";
+import { primitives, geometries } from "@jscad/modeling";
 
 import { Measurements } from "../types/params";
 import { getNeckWidth } from "./shared";
 
 const { line } = primitives;
+const { path2, geom2 } = geometries;
 
 export const generateBackBlock = (params: Measurements) => {
   const { bustHeight, waistHeight, shoulderWidth } = params;
@@ -22,9 +23,21 @@ export const generateBackBlock = (params: Measurements) => {
   const neckWidth = getNeckWidth(params);
 
   const upperShoulderPoint: Vec2 = [neckWidth / 2, 0];
-  const shoulderSlopeAngle = Math.atan(7.5 / -1);
+  const shoulderSlopeAngle = Math.atan(1 / 7.5);
+  const shoulderLength = (shoulderWidth - neckWidth) / 2;
+  const lowerShoulderPoint: Vec2 = [
+    shoulderWidth / 2,
+    Math.sin(shoulderSlopeAngle) * shoulderLength,
+  ];
+
+  let backOutline = path2.create();
+  backOutline = path2.appendPoints(
+    [upperShoulderPoint, lowerShoulderPoint],
+    centerBackLine
+  );
+  backOutline = path2.close(backOutline);
 
   return {
-    backShort: centerBackLine,
+    backShort: backOutline,
   };
 };

@@ -10,6 +10,14 @@ export const main = (params: Measurements) => {
 export const getParameterDefinitions = () => {
   const parameters: DesignParameter[] = [
     {
+      name: "bustRound",
+      type: "number",
+      initial: 31,
+      caption: "Bust (round horizontal measurement)",
+      step: 0.25,
+      min: 0,
+    },
+    {
       name: "shoulderWidth",
       type: "number",
       initial: 14.5,
