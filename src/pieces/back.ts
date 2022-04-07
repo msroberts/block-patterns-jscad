@@ -10,6 +10,7 @@ import {
   getWaistWidth,
   HIP_HEIGHT,
 } from "./shared";
+import { appendSmoothCurve } from "../utils/curves";
 
 const { line } = primitives;
 const { path2 } = geometries;
@@ -52,7 +53,26 @@ export const generateBackBlock = (params: Measurements) => {
 
   backOutline = path2.appendPoints([backHipPoint], backOutline);
 
-  backOutline = path2.appendPoints([backWaistPoint], backOutline);
+  backOutline = appendSmoothCurve(
+    [
+      {
+        origin: backHipPoint,
+        distance: (HIP_HEIGHT * 3) / 4,
+        angle: (Math.PI * 3) / 2,
+      },
+      {
+        origin: backWaistPoint,
+        distance: HIP_HEIGHT / 4,
+        angle: (Math.PI * 3) / 2,
+      },
+      {
+        origin: backArmholePoint,
+        distance: 0,
+        angle: 0,
+      },
+    ],
+    backOutline
+  );
 
   backOutline = path2.appendPoints(
     [backArmholePoint, backArmholeHalfPoint],
