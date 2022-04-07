@@ -4,7 +4,7 @@ import { Measurements } from "../types/params";
 export const HIP_HEIGHT = 9;
 
 export const getNeckWidth = ({ bustRound }: Measurements) => {
-  return Math.max(bustRound / 16 + 1 / 2, 2.75);
+  return Math.max(bustRound / 8 + 1, 2.75);
 };
 
 export const getHipWidth = ({ hipRound, ease }: Measurements) => {
