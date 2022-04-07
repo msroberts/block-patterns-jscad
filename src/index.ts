@@ -3,13 +3,18 @@ import { generateBackBlock } from "./pieces/back";
 import { colors, transforms } from "@jscad/modeling";
 
 const { colorize, cssColors } = colors;
+const { scale } = transforms;
+
+const IN_TO_MM = 25.4;
 
 export const main = (params: Measurements) => {
   const backPieces = generateBackBlock(params).map((path) =>
     colorize(cssColors.blue, path)
   );
 
-  return [...backPieces];
+  return [...backPieces].map((path) =>
+    scale([IN_TO_MM, IN_TO_MM, IN_TO_MM], path)
+  );
 };
 
 export const getParameterDefinitions = () => {
