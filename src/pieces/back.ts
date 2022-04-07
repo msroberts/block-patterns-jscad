@@ -100,7 +100,7 @@ export const generateBackBlock = (params: Measurements) => {
     [
       {
         origin: upperShoulderPoint,
-        angle: shoulderSlopeAngle + Math.PI / 2,
+        angle: shoulderSlopeAngle * 2 + Math.PI / 2,
         distance: 2 / 3,
       },
       {
