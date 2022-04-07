@@ -27,7 +27,8 @@ export const generateBackBlock = (params: Measurements) => {
 
   const backWaistPoint: Vec2 = [getWaistWidth(params), centerBackWaistLine[1]];
 
-  const { upperShoulderPoint, lowerShoulderPoint } = getShoulderPoints(params);
+  const { upperShoulderPoint, lowerShoulderPoint, shoulderSlopeAngle } =
+    getShoulderPoints(params);
 
   const armholeDepth = getArmholeDepth(params);
 
@@ -94,6 +95,23 @@ export const generateBackBlock = (params: Measurements) => {
     [lowerShoulderPoint, upperShoulderPoint],
     backOutline
   );
+
+  backOutline = appendSmoothCurve(
+    [
+      {
+        origin: upperShoulderPoint,
+        angle: shoulderSlopeAngle + Math.PI / 2,
+        distance: 2 / 3,
+      },
+      {
+        origin: centerBackNeckPoint,
+        angle: Math.PI,
+        distance: upperShoulderPoint[0] / 2,
+      },
+    ],
+    backOutline
+  );
+
   backOutline = path2.close(backOutline);
 
   return {
