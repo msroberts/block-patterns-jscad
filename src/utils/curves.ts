@@ -23,9 +23,7 @@ export const appendSmoothCurve = (curvePoints: CurvePoint[], path: Path2) => {
       end.origin,
     ];
 
-    console.log(controlPoints);
-
-    path = path2.appendBezier({ controlPoints, segments: 4 }, path);
+    path = path2.appendBezier({ controlPoints, segments: 40 }, path);
   }
 
   return path;

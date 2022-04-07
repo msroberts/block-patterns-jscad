@@ -32,7 +32,7 @@ export const getShoulderPoints = (params: Measurements) => {
     Math.sin(shoulderSlopeAngle) * shoulderLength,
   ];
 
-  return [upperShoulderPoint, lowerShoulderPoint];
+  return { upperShoulderPoint, lowerShoulderPoint, shoulderSlopeAngle };
 };
 
 export const getArmholeDepth = ({ armRound, ease }: Measurements) => {
