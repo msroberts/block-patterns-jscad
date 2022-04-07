@@ -15,7 +15,7 @@ export const generateBackBlock = (params: Measurements) => {
   const centerBackWaistLine: Vec2 = [0, waistHeight];
   const centerBackHipLine: Vec2 = [0, waistHeight + HIP_HEIGHT];
 
-  const centerBackLine = line([
+  let backOutline = path2.create([
     centerBackNeckPoint,
     centerBackBustLine,
     centerBackWaistLine,
@@ -27,7 +27,7 @@ export const generateBackBlock = (params: Measurements) => {
     centerBackHipLine[1],
   ];
 
-  let backOutline = path2.appendPoints([backHipPoint], centerBackLine);
+  backOutline = path2.appendPoints([backHipPoint], backOutline);
 
   backOutline = path2.appendPoints(
     getShoulderPoints(params).reverse(),
