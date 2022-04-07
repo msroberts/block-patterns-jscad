@@ -7,6 +7,10 @@ export const getNeckWidth = ({ bustRound }: Measurements) => {
   return Math.max(bustRound / 16 + 1 / 2, 2.75);
 };
 
+export const getHipWidth = ({ hipRound, ease }: Measurements) => {
+  return (hipRound + (ease * 2) / 3) / 4;
+};
+
 export const getShoulderPoints = (params: Measurements) => {
   const { shoulderWidth } = params;
 
