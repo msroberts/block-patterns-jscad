@@ -7,6 +7,7 @@ import {
   getChestWidth,
   getHipWidth,
   getShoulderPoints,
+  getWaistDartPoints,
   getWaistWidth,
   HIP_HEIGHT,
 } from "./shared";
@@ -114,5 +115,7 @@ export const generateBackBlock = (params: Measurements) => {
 
   backOutline = path2.close(backOutline);
 
-  return [backOutline].map((path) => mirrorY(path));
+  let backDart = path2.fromPoints({ closed: true }, getWaistDartPoints(params));
+
+  return [backOutline, backDart].map((path) => mirrorY(path));
 };
